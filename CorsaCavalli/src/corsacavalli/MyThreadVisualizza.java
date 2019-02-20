@@ -9,20 +9,16 @@ package corsacavalli;
  *
  * @author Mirko Ghislanzoni
  */
-public class MyThreadCavalli extends Thread{
-
+public class MyThreadVisualizza extends Thread {
     private DatiCondivisi d;
-    private String cloppete;
+
     
-    public MyThreadCavalli(String cloppete, DatiCondivisi d){
-        this.cloppete=cloppete;
+    public MyThreadVisualizza(DatiCondivisi d){
         this.d=d;
     }
     
     @Override
     public void run(){
-        for (int i=0; i<=50;i++){
-            d.push(cloppete);
-        }
+      d.visualizza();
     }
 }

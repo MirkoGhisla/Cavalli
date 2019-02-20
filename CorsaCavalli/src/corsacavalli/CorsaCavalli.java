@@ -7,7 +7,7 @@ package corsacavalli;
 
 /**
  *
- * @author ghislanzoni_mirko
+ * @author Mirko Ghislanzoni
  */
 public class CorsaCavalli {
 
@@ -15,12 +15,16 @@ public class CorsaCavalli {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MyThreadCavalli th1 = new MyThreadCavalli( "Clop1");
-        MyThreadCavalli th2 = new MyThreadCavalli( "Clop2");
-        MyThreadCavalli th3 = new MyThreadCavalli( "Clop3");
-        MyThreadCavalli th4 = new MyThreadCavalli("Clop4");
-        MyThreadCavalli th5 = new MyThreadCavalli("Clop5");
+        DatiCondivisi d = new DatiCondivisi();
+        
+        MyThreadCavalli th1 = new MyThreadCavalli( "Clop1", d);
+        MyThreadCavalli th2 = new MyThreadCavalli( "Clop2", d);
+        MyThreadCavalli th3 = new MyThreadCavalli( "Clop3", d);
+        MyThreadCavalli th4 = new MyThreadCavalli("Clop4", d);
+        MyThreadCavalli th5 = new MyThreadCavalli("Clop5", d);
 
+        MyThreadVisualizza thV = new MyThreadVisualizza(d);
+        
         th1.start();
         th2.start();
         th3.start();
@@ -37,6 +41,13 @@ public class CorsaCavalli {
         } catch (InterruptedException e) {
         }
 
+        thV.start();
+        
+        try {
+            thV.join();
+        } catch (InterruptedException e) {
+        }        
+        
     }
 
 }
